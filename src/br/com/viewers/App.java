@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 
 import br.com.dao.UsuarioDAO;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -51,7 +52,6 @@ public class App {
 
 	
 
-	
 	/**
 	 * Initialize the contents of the frame.
 	 */
