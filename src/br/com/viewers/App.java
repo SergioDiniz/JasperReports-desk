@@ -6,9 +6,19 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+import br.com.dao.UsuarioDAO;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
+
 import javax.swing.JMenu;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
@@ -39,6 +49,9 @@ public class App {
 		initialize();
 	}
 
+	
+
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -73,14 +86,36 @@ public class App {
 		menuBar.add(mnRelatrios);
 		
 		JMenuItem mntmUsurios = new JMenuItem("Usuários");
-		mntmUsurios.addActionListener(new ActionListener() {
+		mntmUsurios.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				
-				// Gera Relatorios
+				// Gerar Relatorios
+				int confirma = JOptionPane.showConfirmDialog(null, "Deseja confirmar a Geração do Formuario?"
+						, "Atenção!", JOptionPane.YES_NO_OPTION);
+				
+				if(confirma == JOptionPane.YES_OPTION){
+					
+					try {
+						
+						JRBeanCollectionDataSource connection = new JRBeanCollectionDataSource(new UsuarioDAO().listUsuario());
+						
+						JasperPrint print = JasperFillManager.fillReport("src/reports/listaUsuario.jasper", new HashMap<>(), connection);
+						
+						JasperViewer.viewReport(print, false );
+						
+					} catch (Exception e2) {
+						JOptionPane.showMessageDialog(null, "Um erro ocorreu: " + e2.getMessage());
+					}
+					
+				}
+				
+				
 				
 			}
 		});
 		mnRelatrios.add(mntmUsurios);
+		
+		
 	}
 
 }

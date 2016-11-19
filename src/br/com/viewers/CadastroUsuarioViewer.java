@@ -104,7 +104,7 @@ public class CadastroUsuarioViewer extends JFrame {
 				try {
 					// add new User
 					Usuario usuario = new Usuario();
-					usuario.setDataNascimento(Calendar.getInstance());
+					usuario.setDataNascimento(Calendar.getInstance().getTime());
 					usuario.setNome(tfNome.getText());
 					usuario.setEmail(tfEmaill.getText());
 					usuario.setEndereco(tfEndereco.getText());

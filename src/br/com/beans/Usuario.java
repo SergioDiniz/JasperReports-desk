@@ -1,6 +1,6 @@
 package br.com.beans;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +18,7 @@ public class Usuario {
 	private String email;
 	private String endereco;
 	@Temporal(TemporalType.DATE)
-	private Calendar dataNascimento;
+	private Date datanascimento;
 	
 	public Usuario() {
 	}
@@ -82,15 +82,15 @@ public class Usuario {
 	/**
 	 * @return the dataNascimento
 	 */
-	public Calendar getDataNascimento() {
-		return dataNascimento;
+	public Date getDataNascimento() {
+		return datanascimento;
 	}
 
 	/**
 	 * @param dataNascimento the dataNascimento to set
 	 */
-	public void setDataNascimento(Calendar dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setDataNascimento(Date dataNascimento) {
+		this.datanascimento = dataNascimento;
 	}
 	
 	
